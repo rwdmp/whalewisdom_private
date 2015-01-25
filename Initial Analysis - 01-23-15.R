@@ -2,23 +2,32 @@
 #Manual import program
 
 #Importing the data
-my_dir <- "C:/Users/ESPIJ090.WDW/whalewisdom/SQL DB"
+my_dir <- "C:/Users/ESPIJ090.WDW/whalewisdom - data/"
 setwd(my_dir)
 stocks <- read.csv("stocks.csv", header = FALSE)
 
 #Adding names since export didn't capture names, should fix this and delete this code later.
 
-data_names <- c("stock_id","symbol","exchange", "name", "market_cap", "shares_outstanding", "institution_percentage", "price", "datetime", "range_low", "range_high", "fifty_two_week_low", "fifty_two_week_high","open","volume","average","dividend","yield","earnings_per_share","beta","price_to_earnings" )
+data_names <- c("stock_id","symbol","exchange", "name", "market_cap", "shares_outstanding", "institution_percentage", "price", "datetime", "range_low", "range_high", "fifty_two_week_low", "fifty_two_week_high","open","volume","average","dividend","yield","earnings_per_share","beta","price_to_earnings")
 
 names(stocks) <- data_names
 
+#Keep only stocks in the NYSE or Nasdaq.
+stocks <- stocks[ which(stocks$exchange=='nasdaq'| stocks$exchange=='nyse'), ]
+
+#Removing foreign stocks identified by the (adr) symbol.
+stocks <-stocks[- grep("(adr)", stocks$name),]
+
 #Quick data exploration
+
 str(stocks)
 summary(stocks)
 
 
 ################################
 #Data Cleaning
+
+#Adjusting stock percentage...don't use this data, keep as is.
 stocks_no100plus <- subset(stocks, institution_percentage <= 100 )
 
 
@@ -31,7 +40,7 @@ table(stocks$exchange)
 #Can stocks be in more than one exchange?
 table(stocks$exchange,stocks$symbol)
 
-#Why isn't all data pulled form the same date?
+
 
 #Can we set up a a different set of tables for dividends, yield, earnings_per_share, beta, and price-to-earnings.
 
@@ -61,16 +70,20 @@ institution_share <- function(data) {
 institution_share(stocks)
 institution_share(stocks_no100plus)
 
-#Stock Price and Institution Percentage
-cor(stocks$price, stocks$institution_percentage)
-
-#Simple regression between price and financial metrics.
-lm <- lm(price ~ beta + dividend + institution_percentage, data = stocks)
-summary(lm)
-
 #The following steps are to take the analysis to rattle to check for prediction accuracy.
 
+#Spliting data into dividend and non-dividend companies
+stocks_nodividend <- stocks[ which(stocks$dividend==0), ]
+stocks_dividend <- stocks[ which(stocks$dividend>0), ]
 
+
+
+write.csv(stocks, "stocks_clean.csv")
+write.csv(stocks_dividend, "stocks_dividend.csv")
+write.csv(stocks_nodividend, "stocks_nodividend.csv")
+
+library(rattle)
+rattle()
 
 
 
