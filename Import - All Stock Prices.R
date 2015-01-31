@@ -6,13 +6,13 @@ library(tseries)
 ## ticker symbol in second column
 
 #Setting Working Directory
-setwd("C:/Users/ESPIJ090.WDW/whalewisdom/")
+setwd("C:/Users/ESPIJ090.WDW/whalewisdom - data/")
 
 spComp <- read.csv("all_stocks.csv" ) 
 
 ## specify time period
-dateStart <- "1995-01-01"               
-dateEnd <- "2013-05-01"
+dateStart <- "2010-01-01"               
+dateEnd <- Sys.Date()
 
 ## extract symbols and number of iterations
 symbols <- spComp[, 2]
