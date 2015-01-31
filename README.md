@@ -1,5 +1,9 @@
-# whalewisdom
+## whalewisdom
 
-Contains macroeconomic data and baseline model for econometric/machine learning algorithms for baseline model
+###The goal of this repository is to store code that allows for efficient collection of publically avaialble data.
 
 Issues and sensitivie projects will be tracked at [redmine.jacksonleung.com](redmine.jacksonleung.com)
+
+##Programs
+
+
