@@ -11,7 +11,7 @@ setwd("C:/Users/ESPIJ090.WDW/whalewisdom - data/")
 spComp <- read.csv("all_stocks.csv" ) 
 
 ## specify time period
-dateStart <- "2010-01-01"               
+dateStart <- "2014-01-01"               
 dateEnd <- Sys.Date()
 
 ## extract symbols and number of iterations
