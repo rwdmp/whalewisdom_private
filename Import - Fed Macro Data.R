@@ -46,6 +46,13 @@ z <- merge(z,USD6MTD156N)
 
 z <- as.data.frame(z)
 
+
+#Creating Lags of Each Variable.
+
+
+
+
+
 write.csv(z,"C:/Users/ESPIJ090.WDW/whalewisdom - data/DailyFed.csv", row.names = TRUE)
 
 
