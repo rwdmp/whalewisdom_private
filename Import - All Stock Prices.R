@@ -8,14 +8,15 @@ library(tseries)
 #Setting Working Directory
 setwd("C:/Users/ESPIJ090.WDW/whalewisdom - data/")
 
-spComp <- read.csv("all_stocks.csv" ) 
+spComp <- read.csv("all_stocks_500.csv")
 
 ## specify time period
-dateStart <- "2014-01-01"               
+dateStart <- "2005-01-01"               
 dateEnd <- Sys.Date()
 
+
 ## extract symbols and number of iterations
-symbols <- spComp[, 2]
+symbols <- spComp[, 1]
 nAss <- length(symbols)
 
 ## download data on first stock as zoo object
@@ -51,4 +52,5 @@ for (i in 2:nAss) {
 
 ## save data
 stocks <- as.data.frame(z)
+
 write.csv(stocks,"AllStockPrices.csv")
