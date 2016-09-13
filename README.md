@@ -1,8 +1,10 @@
 ## whalewisdom
 
-###The goal of this repository is to store code that allows for efficient collection of publically available data.
+###The goal of this repository is to store code that allows for efficient collection of publically available data on stocks and use machine learning algorithms to predict prices of specific stocks.
 
-Issues and sensitive projects will be tracked at [redmine.jacksonleung.com](http://redmine.jacksonleung.com/login?back_url=http%3A%2F%2Fredmine.jacksonleung.com%2F)
-
+### Data include:
+ - Federal Reserve Economic data (e.g. interest rates, exchange rate, commodity prices, industrial production,etc.)
+ - Daily stock price for over 4000 stocks
+ - Company fincial data on over 4000 companies including: income statements, balance sheets, and statement of cash flows
 
 
